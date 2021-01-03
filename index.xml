@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Murat ARSLAN</title>
+    
+    
+    
+    <link>https://arslanmurat06.github.io/</link>
+    <description>Recent content on Murat ARSLAN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://arslanmurat06.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>https://arslanmurat06.github.io/about/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://arslanmurat06.github.io/about/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Hi there My name is Murat and I have been working as a software developer in a Denmark based telecommunication company for 4 years. In may professional life I use .Net frameworks and write codes with C#. But out of my professional life, I try to use various technologies like Python, Dart for Flutterand sometimes JavaScript frameworks as React and a little bit React Native but after met with Flutter I gave up it.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Hello Friend</title>
+      <link>https://arslanmurat06.github.io/posts/hello/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://arslanmurat06.github.io/posts/hello/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://arslanmurat06.github.io/img/hello.jpg&#34;/&gt;
+          
+        
+        
+        
+          Let&amp;rsquo;s start.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Showcase</title>
+      <link>https://arslanmurat06.github.io/showcase/</link>
+      <pubDate>Fri, 18 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://arslanmurat06.github.io/showcase/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Header 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec interdum metus. Aenean rutrum ligula sodales ex auctor, sed tempus dui mollis. Curabitur ipsum dui, aliquet nec commodo at, tristique eget ante. Donec quis dolor nec nunc mollis interdum vel in purus. Sed vitae leo scelerisque, sollicitudin elit sed, congue ante. In augue nisl, vestibulum commodo est a, tristique porttitor est. Proin laoreet iaculis ornare. Nullam ut neque quam.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Archive</title>
+      <link>https://arslanmurat06.github.io/archive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://arslanmurat06.github.io/archive/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>
