@@ -9,10 +9,29 @@
     <description>Recent content in Posts on Murat ARSLAN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://arslanmurat06.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Use multiple environments in ASP.NET Core with specific appsettings.json</title>
+      <link>https://arslanmurat06.github.io/posts/environment/</link>
+      <pubDate>Sun, 21 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://arslanmurat06.github.io/posts/environment/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://arslanmurat06.github.io/img/header.png&#34;/&gt;
+          
+        
+        
+        
+          Before publishing a service or application to production, we all may want to see how it behaves on test environment. So we have test servers or test dbs to check apis behaviours with this test environments. Today I m going to tell you how you publish you ASPNET Core Web API to the specific environment that will use specific appsettings.json file. As you know there are appsettings.json that stores your connection strings, or other setttings.
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>Error handling by using middlewares in .NET5 Web API</title>
