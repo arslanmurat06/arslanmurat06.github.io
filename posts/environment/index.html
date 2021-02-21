@@ -197,14 +197,18 @@ As you know there are appsettings.json that stores your connection strings, or o
 <p>As you know there are appsettings.json that stores your connection strings, or other setttings. You can create various appsettings.json for your various environments. If you have test environment you can set <strong>appsettings.Development.json</strong> or for your staging environment you can set <strong>appsettings.Staging.json</strong> and for you productions settigs you can put them into the <strong>appsetting.json</strong>. But how do your environments know which appsettings.json the will use?</p>
 <p>There are many methods you will see when you google it. I tried many of them but the best and easiest solution is to set it from <strong>IIS Settings</strong>. Let&rsquo;s see how it can be done.</p>
 <p>Open IIS and choose you web site from Sites folder.</p>
-<p><img src="/img/1.png" alt="Example image"></p>
+<p><img src="/img/1.png" alt="IIS Settings_1"></p>
 <p>There is Configuration Editor that we will add our Name-Value configuration.</p>
+<p><img src="/img/2.png" alt="IIS Settings_2"></p>
 <p>In <strong>Configuration Editor</strong> there is <strong>Section</strong> and <strong>From</strong> comboboxes.</p>
+<p><img src="/img/3.png" alt="IIS Settings_3"></p>
 <p>Section will be <strong>system.webServer/aspNetCore</strong>
 From will be <strong>ApplicationHost.config<!-- raw HTML omitted --></strong></p>
 <p>There is <strong>environmentVariables</strong> part where we will add our environment variables depends on our appsettings.json.</p>
-<p>Right click and choose &lsquo;environmentVariables&rsquo; Element and choose <strong>Edit Items</strong>.</p>
+<p>Right click and choose &lsquo;environmentVariables&rsquo; Element and choose **Edit Items</p>
+<p><img src="/img/4.png" alt="IIS Settings_4"></p>
 <p>On the right side there is Add button, click it and enter name as <strong>&lsquo;ASPNETCORE_ENVIRONMENT&rsquo;</strong> and value is if you want to set development, enter <strong>Development</strong> or if you want this machine run Staging put value as &lsquo;Staging&rsquo;. Thats all. When you run the Web API it will use the appsettings.json related to the value that you set as variable.</p>
+<p><img src="/img/5.png" alt="IIS Settings_5"></p>
 
     </div>
     
