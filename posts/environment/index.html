@@ -197,6 +197,7 @@ As you know there are appsettings.json that stores your connection strings, or o
 <p>As you know there are appsettings.json that stores your connection strings, or other setttings. You can create various appsettings.json for your various environments. If you have test environment you can set <strong>appsettings.Development.json</strong> or for your staging environment you can set <strong>appsettings.Staging.json</strong> and for you productions settigs you can put them into the <strong>appsetting.json</strong>. But how do your environments know which appsettings.json the will use?</p>
 <p>There are many methods you will see when you google it. I tried many of them but the best and easiest solution is to set it from <strong>IIS Settings</strong>. Let&rsquo;s see how it can be done.</p>
 <p>Open IIS and choose you web site from Sites folder.</p>
+<p><img src="img/1.png" alt="Example image"></p>
 <p>There is Configuration Editor that we will add our Name-Value configuration.</p>
 <p>In <strong>Configuration Editor</strong> there is <strong>Section</strong> and <strong>From</strong> comboboxes.</p>
 <p>Section will be <strong>system.webServer/aspNetCore</strong>
