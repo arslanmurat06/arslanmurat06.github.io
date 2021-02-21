@@ -11,7 +11,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="Before publishing a service or application to production, we all may want to see how it behaves on test environment. So we have test servers or test dbs to check apis behaviours with this test environments. Today I m going to tell you how you publish you ASPNET Core Web API to the specific environment that will use specific appsettings.json file. As you know there are appsettings.json that stores your connection strings, or other setttings."
+  content="Before publishing a service or application to the production, we all may want to see how it behaves on test environments. So we have test servers or test dbs to check apis behaviours with this test environments.
+Today I m going to show you how you publish your ASPNET Core Web API to the specific environment that will use specific appsettings.json file.
+As you know there are appsettings.json that stores your connection strings, or other setttings."
 />
 <meta
   name="keywords"
@@ -47,12 +49,16 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Use multiple environments in ASP.NET Core with specific appsettings.json"/>
-<meta name="twitter:description" content="Before publishing a service or application to production, we all may want to see how it behaves on test environment. So we have test servers or test dbs to check apis behaviours with this test environments. Today I m going to tell you how you publish you ASPNET Core Web API to the specific environment that will use specific appsettings.json file. As you know there are appsettings.json that stores your connection strings, or other setttings."/>
+<meta name="twitter:description" content="Before publishing a service or application to the production, we all may want to see how it behaves on test environments. So we have test servers or test dbs to check apis behaviours with this test environments.
+Today I m going to show you how you publish your ASPNET Core Web API to the specific environment that will use specific appsettings.json file.
+As you know there are appsettings.json that stores your connection strings, or other setttings."/>
 
 
 
 <meta property="og:title" content="Use multiple environments in ASP.NET Core with specific appsettings.json" />
-<meta property="og:description" content="Before publishing a service or application to production, we all may want to see how it behaves on test environment. So we have test servers or test dbs to check apis behaviours with this test environments. Today I m going to tell you how you publish you ASPNET Core Web API to the specific environment that will use specific appsettings.json file. As you know there are appsettings.json that stores your connection strings, or other setttings." />
+<meta property="og:description" content="Before publishing a service or application to the production, we all may want to see how it behaves on test environments. So we have test servers or test dbs to check apis behaviours with this test environments.
+Today I m going to show you how you publish your ASPNET Core Web API to the specific environment that will use specific appsettings.json file.
+As you know there are appsettings.json that stores your connection strings, or other setttings." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://arslanmurat06.github.io/posts/environment/" />
 <meta property="article:published_time" content="2021-02-21T00:00:00+00:00" />
@@ -186,10 +192,10 @@
 
     <div class="post-content">
       
-      <p>Before publishing a service or application to production,  we all may want to see how it behaves on test environment. So we have test servers or test dbs to check apis behaviours with this test environments. 
-Today I m going to tell you how you publish you <strong>ASPNET Core Web API</strong> to the specific environment that will use specific <strong>appsettings.json</strong> file.
-As you know there are appsettings.json that stores your connection strings, or other setttings. You can create various appsettings.json for your environments. If you have test environment you can set <strong>appsettings.Development.json</strong> or for your staging environment you can set <strong>appsettings.Staging.json</strong> and for you productions settigs you can put them into the appsetting.json. But how do your environments know which appsettings.json the will use?
-There are many methods you will see when you google. I tried many of them but the best and easioust solution is to set it from IIS settings. Let&rsquo;s how it can be done.</p>
+      <p>Before publishing a service or application to the production,  we all may want to see how it behaves on test environments. So we have test servers or test dbs to check apis behaviours with this test environments.</p>
+<p>Today I m going to show you how you publish your <strong>ASPNET Core Web API</strong> to the specific environment that will use specific <strong>appsettings.json</strong> file.</p>
+<p>As you know there are appsettings.json that stores your connection strings, or other setttings. You can create various appsettings.json for your various environments. If you have test environment you can set <strong>appsettings.Development.json</strong> or for your staging environment you can set <strong>appsettings.Staging.json</strong> and for you productions settigs you can put them into the <strong>appsetting.json</strong>. But how do your environments know which appsettings.json the will use?</p>
+<p>There are many methods you will see when you google it. I tried many of them but the best and easiest solution is to set it from <strong>IIS Settings</strong>. Let&rsquo;s see how it can be done.</p>
 <p>Open IIS and choose you web site from Sites folder.</p>
 <p>There is Configuration Editor that we will add our Name-Value configuration.</p>
 <p>In <strong>Configuration Editor</strong> there is <strong>Section</strong> and <strong>From</strong> comboboxes.</p>

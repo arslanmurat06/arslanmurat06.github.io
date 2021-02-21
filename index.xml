@@ -27,7 +27,9 @@
         
         
         
-          Before publishing a service or application to production, we all may want to see how it behaves on test environment. So we have test servers or test dbs to check apis behaviours with this test environments. Today I m going to tell you how you publish you ASPNET Core Web API to the specific environment that will use specific appsettings.json file. As you know there are appsettings.json that stores your connection strings, or other setttings.
+          Before publishing a service or application to the production, we all may want to see how it behaves on test environments. So we have test servers or test dbs to check apis behaviours with this test environments.
+Today I m going to show you how you publish your ASPNET Core Web API to the specific environment that will use specific appsettings.json file.
+As you know there are appsettings.json that stores your connection strings, or other setttings.
           
         
         </description>
