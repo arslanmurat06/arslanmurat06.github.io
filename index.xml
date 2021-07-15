@@ -9,10 +9,30 @@
     <description>Recent content on Murat ARSLAN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://arslanmurat06.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Maing downloadable QR Code Generator With Flutter</title>
+      <link>https://arslanmurat06.github.io/posts/qr_code/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://arslanmurat06.github.io/posts/qr_code/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://arslanmurat06.github.io/img/qr.png&#34;/&gt;
+          
+        
+        
+        
+          One of my side web projects, I needed to use QR Code generator. There are many samples on web but I wanted it to be downloadable. With Flutter I should find the widget and should be saved as Image. At this point RepaintBoundary comes to help. With this widget I captured the widget as Image and to make it downloadable, I used dart:html.
+To capture widget as Image dartShow/HideFuture&amp;lt;void&amp;gt; _capturePng() async {final picData = await _painter.
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>Use multiple environments in ASP.NET Core with specific appsettings.json</title>
