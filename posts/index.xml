@@ -9,10 +9,30 @@
     <description>Recent content in Posts on Murat ARSLAN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Feb 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://arslanmurat06.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Background process with Hangfire with .NET 6</title>
+      <link>https://arslanmurat06.github.io/posts/hangfire/</link>
+      <pubDate>Mon, 07 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://arslanmurat06.github.io/posts/hangfire/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://arslanmurat06.github.io/img/healthchecker.gif&#34;/&gt;
+          
+        
+        
+        
+          For .NET environment sometimes you need some scheduler process for recurring jobs. Most popular schedule tools are Quartz and Hangfire.
+Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them.
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>Making downloadable QR Code Generator With Flutter</title>

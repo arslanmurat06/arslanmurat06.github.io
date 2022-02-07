@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        Background process with Hangfire with .NET 6 ::
+        Murat ARSLAN — Blog to remember
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="For .NET environment sometimes you need some scheduler process for recurring jobs. Most popular schedule tools are Quartz and Hangfire.
+Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://arslanmurat06.github.io/posts/hangfire/" />
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-202375801-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-202375801-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<link rel="stylesheet" href="https://arslanmurat06.github.io/assets/style.css" />
+
+<link rel="stylesheet" href="https://arslanmurat06.github.io/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://arslanmurat06.github.io/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://arslanmurat06.github.io/img/favicon.png" />
+
+
+<link href="https://arslanmurat06.github.io/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://arslanmurat06.github.io/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://arslanmurat06.github.io/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://arslanmurat06.github.io/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://arslanmurat06.github.io/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://arslanmurat06.github.io/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Background process with Hangfire with .NET 6"/>
+<meta name="twitter:description" content="For .NET environment sometimes you need some scheduler process for recurring jobs. Most popular schedule tools are Quartz and Hangfire.
+Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them."/>
+
+
+
+<meta property="og:title" content="Background process with Hangfire with .NET 6" />
+<meta property="og:description" content="For .NET environment sometimes you need some scheduler process for recurring jobs. Most popular schedule tools are Quartz and Hangfire.
+Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://arslanmurat06.github.io/posts/hangfire/" />
+<meta property="article:published_time" content="2022-02-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-07T00:00:00+00:00" /><meta property="og:site_name" content="Murat ARSLAN" />
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Murat ARSLAN</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/showcase">Showcase</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/showcase">Showcase</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Background process with Hangfire with .NET 6</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2022-02-07
+        </span>
+
+        
+          
+        
+      
+
+      
+        <span class="post-author"
+          >— Written by Murat ARSLAN</span
+        >
+
+
+      
+    </div>
+
+    
+
+    
+      <figure class="post-cover">
+        
+          <img src="https://arslanmurat06.github.io/img/healthchecker.gif" alt="Background process with Hangfire with .NET 6" />
+        
+
+        
+      </figure>
+    
+
+    <div class="post-content">
+      
+      <p>For <strong>.NET environment</strong> sometimes you need some <strong>scheduler process</strong> for recurring jobs. Most popular schedule tools are <strong>Quartz</strong> and <strong>Hangfire</strong>.</p>
+<p>Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them. With Hangfire all database management is handled by itself. It creates all related tables as job histories, job definitions etc. automatically.</p>
+<p><img src="/img/hangfire_tables.png" alt="Hangfire tables"></p>
+<p>So it makes your jobs very easy. And it provides a dashboard for you to see the jobs details and manage these jobs as delete, update etc.</p>
+<p><img src="/img/hangfire_1.png" alt="Hangfire Dashboard"></p>
+<p>Also Hangfire makes the test easy with its mock library. You can mock Hangfire by using Hangfire mock and Hangfire MemoryStorage for mocking  db processes .</p>
+<p><img src="/img/mock_hangfire.png" alt="Hangfire Dashboard"></p>
+<p>I will share you my project created by using with .Net6 and Hangfire. Lets jump to code a little bit;</p>
+<p>Lets start adding Hangfire to project;</p>
+<p>First add Hangfire from Nuget and add your project as below;</p>
+
+
+
+  <div class="collapsable-code">
+    <input id="1" type="checkbox"  />
+    <label for="1">
+      <span class="collapsable-code__language">c#</span>
+      <span class="collapsable-code__title">Show/Hide</span>
+      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
+    </label>
+    <pre class="language-c#" ><code>
+
+service.AddHangfire(config =&gt;
+            {
+                var options = new SqlServerStorageOptions
+                {
+                    PrepareSchemaIfNecessary = true;
+                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                    UseRecommendedIsolationLevel = true,
+                    UsePageLocksOnDequeue = true,
+                    DisableGlobalLocks = true
+                };
+
+                config.UseSqlServerStorage(configuration.GetConnectionString(&#34;DefaultConnection&#34;), options).WithJobExpirationTimeout(TimeSpan.FromHours(6));
+            });
+
+
+
+</code></pre>
+  </div>
+
+
+<p>To use Hangfire dashboard you should add it to project startup;</p>
+
+
+
+  <div class="collapsable-code">
+    <input id="1" type="checkbox"  />
+    <label for="1">
+      <span class="collapsable-code__language">c#</span>
+      <span class="collapsable-code__title">Show/Hide</span>
+      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
+    </label>
+    <pre class="language-c#" ><code>
+
+app.UseHangfireDashboard(
+                &#34;/hangfire&#34;, new DashboardOptions
+                {
+                    DashboardTitle = &#34;Health Checker Hangfire Dashboard&#34;,
+                    AppPath = &#34;https://localhost:44338/jobs&#34;, 
+                    Authorization = new[] { new HangfireCustomBasicAuthenticationFilter{
+            User = hangfireSettings.Username,
+            Pass = hangfireSettings.Password
+        } } 
+                }
+                );
+
+</code></pre>
+  </div>
+
+
+<p>And to run Hangfire server add ;</p>
+
+
+
+  <div class="collapsable-code">
+    <input id="1" type="checkbox"  />
+    <label for="1">
+      <span class="collapsable-code__language">c#</span>
+      <span class="collapsable-code__title">Show/Hide</span>
+      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
+    </label>
+    <pre class="language-c#" ><code>
+
+app.UseHangfireDashboard(
+                &#34;/hangfire&#34;, new DashboardOptions
+                {
+                    DashboardTitle = &#34;Health Checker Hangfire Dashboard&#34;,
+                    AppPath = &#34;https://localhost:44338/jobs&#34;, 
+                    Authorization = new[] { new HangfireCustomBasicAuthenticationFilter{
+            User = hangfireSettings.Username,
+            Pass = hangfireSettings.Password
+        } } 
+                }
+                );
+
+</code></pre>
+  </div>
+
+
+<p>Add <strong>Retry number</strong> when a schedule failed;</p>
+
+
+
+  <div class="collapsable-code">
+    <input id="1" type="checkbox"  />
+    <label for="1">
+      <span class="collapsable-code__language">c#</span>
+      <span class="collapsable-code__title">Show/Hide</span>
+      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
+    </label>
+    <pre class="language-c#" ><code>
+
+ GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 7 });
+
+</code></pre>
+  </div>
+
+
+<p>Thats all fro startup. I will share only ScheduleService to show how to CRUD a hangfire job. More is on github link;</p>
+
+
+
+  <div class="collapsable-code">
+    <input id="1" type="checkbox"  />
+    <label for="1">
+      <span class="collapsable-code__language">c#</span>
+      <span class="collapsable-code__title">Show/Hide</span>
+      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
+    </label>
+    <pre class="language-c#" ><code>
+
+public class ScheduleJobManager&lt;T&gt; : IScheduleJobManager&lt;T&gt; where T : IJob
+    {
+        public void AddJob(string jobName, int jobId, int interval, IntervalEnum intervalType)
+        {
+            RecurringJob.AddOrUpdate&lt;T&gt;(jobName, j =&gt; j.Process(jobId), GetCronFromInterval(interval, intervalType));
+        }
+
+        public void DeleteJob(string jobName)
+        {
+            RecurringJob.RemoveIfExists(jobName);
+        }
+
+        public void UpdateJob(string oldJobName, string jobName, int jobId, int interval, IntervalEnum intervalType)
+        {
+            RecurringJob.RemoveIfExists(oldJobName);
+            RecurringJob.AddOrUpdate&lt;T&gt;(jobName, j =&gt; j.Process(jobId), GetCronFromInterval(interval, intervalType));
+        }
+
+        private string GetCronFromInterval(int interval, IntervalEnum intervalType)
+        {
+            var result = intervalType switch
+            {
+                IntervalEnum.Minute =&gt; Cron.MinuteInterval(interval),
+                IntervalEnum.Hour =&gt; Cron.HourInterval(interval),
+                IntervalEnum.Day =&gt; Cron.DayInterval(interval),
+                IntervalEnum.Week =&gt; Cron.Weekly(),
+                IntervalEnum.Month =&gt; Cron.MonthInterval(interval),
+                _ =&gt; throw new NotImplementedException()
+            };
+            return result;
+        }
+    }
+
+</code></pre>
+  </div>
+
+
+<p><a href="https://github.com/arslanmurat06/healthchecker">Github Link</a></p>
+<p>Thanks for reading. See you soon 😄</p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://arslanmurat06.github.io/posts/qr_code/">
+                  <span class="button__text">Making downloadable QR Code Generator With Flutter</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Murat ARSLAN</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2022 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://arslanmurat06.github.io/assets/main.js"></script>
+<script src="https://arslanmurat06.github.io/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-202375801-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>
