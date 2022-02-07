@@ -3,7 +3,7 @@
   <head>
     
       <title>
-        Background process with Hangfire with .NET 6 ::
+        Background process with Hangfire and .NET 6 ::
         Murat ARSLAN — Blog to remember
       </title>
     
@@ -73,13 +73,13 @@ if (!doNotTrack) {
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Background process with Hangfire with .NET 6"/>
+<meta name="twitter:title" content="Background process with Hangfire and .NET 6"/>
 <meta name="twitter:description" content="For .NET environment sometimes you need some scheduler process for recurring jobs. Most popular schedule tools are Quartz and Hangfire.
 Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them."/>
 
 
 
-<meta property="og:title" content="Background process with Hangfire with .NET 6" />
+<meta property="og:title" content="Background process with Hangfire and .NET 6" />
 <meta property="og:description" content="For .NET environment sometimes you need some scheduler process for recurring jobs. Most popular schedule tools are Quartz and Hangfire.
 Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them." />
 <meta property="og:type" content="article" />
@@ -180,7 +180,7 @@ Before, I had used Quartz in my some projects but after introduced with Hangfire
   
 
   <div class="post">
-    <h1 class="post-title">Background process with Hangfire with .NET 6</h1>
+    <h1 class="post-title">Background process with Hangfire and .NET 6</h1>
     <div class="post-meta">
       
         <span class="post-date">
@@ -206,7 +206,7 @@ Before, I had used Quartz in my some projects but after introduced with Hangfire
     
       <figure class="post-cover">
         
-          <img src="https://arslanmurat06.github.io/img/healthchecker.gif" alt="Background process with Hangfire with .NET 6" />
+          <img src="https://arslanmurat06.github.io/img/healthchecker.gif" alt="Background process with Hangfire and .NET 6" />
         
 
         
@@ -280,8 +280,8 @@ app.UseHangfireDashboard(
             User = hangfireSettings.Username,
             Pass = hangfireSettings.Password
         } } 
-                }
-                );
+                
+		});
 
 </code></pre>
   </div>
@@ -309,8 +309,8 @@ app.UseHangfireDashboard(
             User = hangfireSettings.Username,
             Pass = hangfireSettings.Password
         } } 
-                }
-                );
+                
+			});
 
 </code></pre>
   </div>
@@ -335,7 +335,7 @@ app.UseHangfireDashboard(
   </div>
 
 
-<p>Thats all fro startup. I will share only ScheduleService to show how to CRUD a hangfire job. More is on github link;</p>
+<p>Thats all for startup. I will share only ScheduleService to show how to CRUD a hangfire job. More is on github link;</p>
 
 
 
