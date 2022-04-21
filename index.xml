@@ -9,10 +9,34 @@
     <description>Recent content on Murat ARSLAN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Apr 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://arslanmurat06.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Invoke child generic classes&#39; methods using reflection C#</title>
+      <link>https://arslanmurat06.github.io/posts/reflection/</link>
+      <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://arslanmurat06.github.io/posts/reflection/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://arslanmurat06.github.io/img/reflection.jpeg&#34;/&gt;
+          
+        
+        
+        
+          Hello Guys,
+Today I&amp;rsquo;m going to share you some practical usage of reflection that I faced it before.
+Think that;
+You have a class and inside class there are some generic classes based the same class.
+And you want to call the same method of these generic classes.
+At this point Reflection makes our job easy. With reflection you can reach all these generic classes and invoke their same method.
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>Background process with Hangfire and .NET 6</title>

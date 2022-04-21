@@ -3,7 +3,7 @@
   <head>
     
       <title>
-        Background process with Hangfire and .NET 6 ::
+        Invoke child generic classes&#39; methods using reflection C# ::
         Murat ARSLAN — Blog to remember
       </title>
     
@@ -11,15 +11,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="For .NET environment sometimes you need some scheduler process for recurring jobs. Most popular schedule tools are Quartz and Hangfire.
-Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them."
+  content="Hello Guys,
+Today I&amp;rsquo;m going to share you some practical usage of reflection that I faced it before.
+Think that;
+You have a class and inside class there are some generic classes based the same class.
+And you want to call the same method of these generic classes.
+At this point Reflection makes our job easy. With reflection you can reach all these generic classes and invoke their same method."
 />
 <meta
   name="keywords"
   content=""
 />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="https://arslanmurat06.github.io/posts/hangfire/" />
+<link rel="canonical" href="https://arslanmurat06.github.io/posts/reflection/" />
 
 
 
@@ -73,19 +77,27 @@ if (!doNotTrack) {
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Background process with Hangfire and .NET 6"/>
-<meta name="twitter:description" content="For .NET environment sometimes you need some scheduler process for recurring jobs. Most popular schedule tools are Quartz and Hangfire.
-Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them."/>
+<meta name="twitter:title" content="Invoke child generic classes&#39; methods using reflection C#"/>
+<meta name="twitter:description" content="Hello Guys,
+Today I&rsquo;m going to share you some practical usage of reflection that I faced it before.
+Think that;
+You have a class and inside class there are some generic classes based the same class.
+And you want to call the same method of these generic classes.
+At this point Reflection makes our job easy. With reflection you can reach all these generic classes and invoke their same method."/>
 
 
 
-<meta property="og:title" content="Background process with Hangfire and .NET 6" />
-<meta property="og:description" content="For .NET environment sometimes you need some scheduler process for recurring jobs. Most popular schedule tools are Quartz and Hangfire.
-Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them." />
+<meta property="og:title" content="Invoke child generic classes&#39; methods using reflection C#" />
+<meta property="og:description" content="Hello Guys,
+Today I&rsquo;m going to share you some practical usage of reflection that I faced it before.
+Think that;
+You have a class and inside class there are some generic classes based the same class.
+And you want to call the same method of these generic classes.
+At this point Reflection makes our job easy. With reflection you can reach all these generic classes and invoke their same method." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://arslanmurat06.github.io/posts/hangfire/" />
-<meta property="article:published_time" content="2022-02-07T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-07T00:00:00+00:00" /><meta property="og:site_name" content="Murat ARSLAN" />
+<meta property="og:url" content="https://arslanmurat06.github.io/posts/reflection/" />
+<meta property="article:published_time" content="2022-04-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-21T00:00:00+00:00" /><meta property="og:site_name" content="Murat ARSLAN" />
 
 
 
@@ -180,11 +192,11 @@ Before, I had used Quartz in my some projects but after introduced with Hangfire
   
 
   <div class="post">
-    <h1 class="post-title">Background process with Hangfire and .NET 6</h1>
+    <h1 class="post-title">Invoke child generic classes' methods using reflection C#</h1>
     <div class="post-meta">
       
         <span class="post-date">
-          2022-02-07
+          2022-04-21
         </span>
 
         
@@ -206,7 +218,7 @@ Before, I had used Quartz in my some projects but after introduced with Hangfire
     
       <figure class="post-cover">
         
-          <img src="https://arslanmurat06.github.io/img/healthchecker.gif" alt="Background process with Hangfire and .NET 6" />
+          <img src="https://arslanmurat06.github.io/img/reflection.jpeg" alt="Invoke child generic classes&#39; methods using reflection C#" />
         
 
         
@@ -215,16 +227,14 @@ Before, I had used Quartz in my some projects but after introduced with Hangfire
 
     <div class="post-content">
       
-      <p>For <strong>.NET environment</strong> sometimes you need some <strong>scheduler process</strong> for recurring jobs. Most popular schedule tools are <strong>Quartz</strong> and <strong>Hangfire</strong>.</p>
-<p>Before, I had used Quartz in my some projects but after introduced with Hangfire, it completely changed my mind. Hangfire is open and free for commercial use. And one of my project I used Hangfire and you can see the difference between these two tools when you experience both of them. With Hangfire all database management is handled by itself. It creates all related tables as job histories, job definitions etc. automatically.</p>
-<p><img src="/img/hangfire_tables.png" alt="Hangfire tables"></p>
-<p>So it makes your jobs very easy. And it provides a dashboard for you to see the jobs details and manage these jobs as delete, update etc.</p>
-<p><img src="/img/hangfire_1.png" alt="Hangfire Dashboard"></p>
-<p>Also Hangfire makes the test easy with its mock library. You can mock Hangfire by using Hangfire mock and Hangfire MemoryStorage for mocking  db processes .</p>
-<p><img src="/img/mock_hangfire.png" alt="Hangfire Dashboard"></p>
-<p>I will share you my project created by using with .Net6 and Hangfire. Lets jump to code a little bit;</p>
-<p>Lets start adding Hangfire to project;</p>
-<p>First add Hangfire from Nuget and add your project as below;</p>
+      <p>Hello Guys,</p>
+<p>Today I&rsquo;m going to share you some practical usage of reflection that I faced it before.</p>
+<p>Think that;</p>
+<p>You have a class and inside class there are some generic classes based the same class.</p>
+<p>And you want to call the same method of these generic classes.</p>
+<p>At this point Reflection makes our job easy. With reflection you can reach all these generic classes and invoke their same method.</p>
+<p>Sample tells better;</p>
+<p>We will have a child class named Collector. It will be a generic class.</p>
 
 
 
@@ -237,147 +247,24 @@ Before, I had used Quartz in my some projects but after introduced with Hangfire
     </label>
     <pre class="language-c#" ><code>
 
-service.AddHangfire(config =&gt;
-            {
-                var options = new SqlServerStorageOptions
-                {
-                    PrepareSchemaIfNecessary = true;
-                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                    UseRecommendedIsolationLevel = true,
-                    UsePageLocksOnDequeue = true,
-                    DisableGlobalLocks = true
-                };
-
-                config.UseSqlServerStorage(configuration.GetConnectionString(&#34;DefaultConnection&#34;), options).WithJobExpirationTimeout(TimeSpan.FromHours(6));
-            });
-
-
-
-</code></pre>
-  </div>
-
-
-<p>To use Hangfire dashboard you should add it to project startup;</p>
-
-
-
-  <div class="collapsable-code">
-    <input id="1" type="checkbox"  />
-    <label for="1">
-      <span class="collapsable-code__language">c#</span>
-      <span class="collapsable-code__title">Show/Hide</span>
-      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
-    </label>
-    <pre class="language-c#" ><code>
-
-app.UseHangfireDashboard(
-                &#34;/hangfire&#34;, new DashboardOptions
-                {
-                    DashboardTitle = &#34;Health Checker Hangfire Dashboard&#34;,
-                    AppPath = &#34;https://localhost:44338/jobs&#34;, 
-                    Authorization = new[] { new HangfireCustomBasicAuthenticationFilter{
-            User = hangfireSettings.Username,
-            Pass = hangfireSettings.Password
-        } } 
-                
-		});
-
-</code></pre>
-  </div>
-
-
-<p>And to run Hangfire server add ;</p>
-
-
-
-  <div class="collapsable-code">
-    <input id="1" type="checkbox"  />
-    <label for="1">
-      <span class="collapsable-code__language">c#</span>
-      <span class="collapsable-code__title">Show/Hide</span>
-      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
-    </label>
-    <pre class="language-c#" ><code>
-
-app.UseHangfireDashboard(
-                &#34;/hangfire&#34;, new DashboardOptions
-                {
-                    DashboardTitle = &#34;Health Checker Hangfire Dashboard&#34;,
-                    AppPath = &#34;https://localhost:44338/jobs&#34;, 
-                    Authorization = new[] { new HangfireCustomBasicAuthenticationFilter{
-            User = hangfireSettings.Username,
-            Pass = hangfireSettings.Password
-        } } 
-                
-			});
-
-</code></pre>
-  </div>
-
-
-<p>Add <strong>Retry number</strong> when a schedule failed;</p>
-
-
-
-  <div class="collapsable-code">
-    <input id="1" type="checkbox"  />
-    <label for="1">
-      <span class="collapsable-code__language">c#</span>
-      <span class="collapsable-code__title">Show/Hide</span>
-      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
-    </label>
-    <pre class="language-c#" ><code>
-
- GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 7 });
-
-</code></pre>
-  </div>
-
-
-<p>Thats all for startup. I will share only ScheduleService to show how to CRUD a hangfire job. More is on github link;</p>
-
-
-
-  <div class="collapsable-code">
-    <input id="1" type="checkbox"  />
-    <label for="1">
-      <span class="collapsable-code__language">c#</span>
-      <span class="collapsable-code__title">Show/Hide</span>
-      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
-    </label>
-    <pre class="language-c#" ><code>
-
-public class ScheduleJobManager&lt;T&gt; : IScheduleJobManager&lt;T&gt; where T : IJob
+public class Collector&lt;T&gt;
     {
-        public void AddJob(string jobName, int jobId, int interval, IntervalEnum intervalType)
-        {
-            RecurringJob.AddOrUpdate&lt;T&gt;(jobName, j =&gt; j.Process(jobId), GetCronFromInterval(interval, intervalType));
-        }
+        private readonly List&lt;T&gt; bag;
 
-        public void DeleteJob(string jobName)
-        {
-            RecurringJob.RemoveIfExists(jobName);
-        }
+        public Collector() =&gt; bag = new();
 
-        public void UpdateJob(string oldJobName, string jobName, int jobId, int interval, IntervalEnum intervalType)
-        {
-            RecurringJob.RemoveIfExists(oldJobName);
-            RecurringJob.AddOrUpdate&lt;T&gt;(jobName, j =&gt; j.Process(jobId), GetCronFromInterval(interval, intervalType));
-        }
+        public void AddBag(T item) =&gt; bag.Add(item);
 
-        private string GetCronFromInterval(int interval, IntervalEnum intervalType)
+        public void RemoveBag(T item) =&gt; bag.Remove(item);
+
+        public void Clear() =&gt; bag.Clear();
+
+        public string GetAllItems()
         {
-            var result = intervalType switch
-            {
-                IntervalEnum.Minute =&gt; Cron.MinuteInterval(interval),
-                IntervalEnum.Hour =&gt; Cron.HourInterval(interval),
-                IntervalEnum.Day =&gt; Cron.DayInterval(interval),
-                IntervalEnum.Week =&gt; Cron.Weekly(),
-                IntervalEnum.Month =&gt; Cron.MonthInterval(interval),
-                _ =&gt; throw new NotImplementedException()
-            };
-            return result;
+            if (!bag.Any())
+                return $&#34;No items in collection with type {typeof(T).Name}&#34;;
+
+            return String.Join(&#34;, &#34;, bag);
         }
     }
 
@@ -385,7 +272,134 @@ public class ScheduleJobManager&lt;T&gt; : IScheduleJobManager&lt;T&gt; where T 
   </div>
 
 
-<p><a href="https://github.com/arslanmurat06/healthchecker">Github Link</a></p>
+<p>And we have the parent class named CollectorManager which has many Collector&lt;&gt; child classes.</p>
+
+
+
+  <div class="collapsable-code">
+    <input id="1" type="checkbox"  />
+    <label for="1">
+      <span class="collapsable-code__language">c#</span>
+      <span class="collapsable-code__title">Show/Hide</span>
+      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
+    </label>
+    <pre class="language-c#" ><code>
+
+public class CollectorManager
+    {
+
+
+        private List&lt;int&gt; a = new();
+        public Collector&lt;int&gt; IntCollector { get; set; }
+        public Collector&lt;String&gt; StringCollector { get; set; }
+        public Collector&lt;double&gt; DoubleCollector { get; set; }
+
+        public CollectorManager()
+        {
+            IntCollector = new();
+            StringCollector = new();
+            DoubleCollector = new();
+        }
+
+        // Instead of doing this
+
+        // public void ClearAllCollectors(){
+        //     IntCollector.Clear();
+        //     StringCollector.Clear();
+        //     DoubleCollector.Clear();
+        // }
+
+        public void ClearAllCollectors()
+        {
+            //get all public properties
+            var allProperties = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            //filter only Collector&lt;T&gt; types
+            var allCollectorTypes = allProperties.Where(p =&gt; p.PropertyType.IsGenericType
+                                                         &amp;&amp; p.PropertyType.GetGenericTypeDefinition() == typeof(Collector&lt;&gt;));
+
+            foreach (var collector in allCollectorTypes)
+            {
+                Type collectorType = typeof(Collector&lt;&gt;);
+
+                //find  generic of collector
+                Type genericCollectorType = collectorType.MakeGenericType(collector.PropertyType.GetGenericArguments()[0]);
+
+                //invoke Clear method of collector
+                genericCollectorType?.GetMethod(&#34;Clear&#34;)?.Invoke(collector.GetValue(this), null);
+            }
+        }
+    }
+
+
+</code></pre>
+  </div>
+
+
+<p>And we want to call &ldquo;Clear&rdquo; method of  all child classes . Of course we can do it easily with;</p>
+
+
+
+  <div class="collapsable-code">
+    <input id="1" type="checkbox"  />
+    <label for="1">
+      <span class="collapsable-code__language">c#</span>
+      <span class="collapsable-code__title">Show/Hide</span>
+      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
+    </label>
+    <pre class="language-c#" ><code>
+
+   public void clearallcollectors(){
+   
+         Intcollector.clear();
+         Stringcollector.clear();
+         Doublecollector.clear();
+		 
+         }
+</code></pre>
+  </div>
+
+
+<p>But maybe  later a new child class will be added into the parent class so this new class &ldquo;Clear&rdquo; method should be added inside &ldquo;clearAllCollectors&rdquo; method.</p>
+<p>Instead, we can use the power of Reflection.</p>
+<p>By using reflection we will find the child classes and call &ldquo;Clear&rdquo; methods of each one;</p>
+
+
+
+  <div class="collapsable-code">
+    <input id="1" type="checkbox"  />
+    <label for="1">
+      <span class="collapsable-code__language">c#</span>
+      <span class="collapsable-code__title">Show/Hide</span>
+      <span class="collapsable-code__toggle" data-label-expand="Show" data-label-collapse="Hide"></span>
+    </label>
+    <pre class="language-c#" ><code>
+
+public void ClearAllCollectors()
+        {
+            //get all public properties
+            var allProperties = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            //filter only Collector&lt;T&gt; types
+            var allCollectorTypes = allProperties.Where(p =&gt; p.PropertyType.IsGenericType
+                                                         &amp;&amp; p.PropertyType.GetGenericTypeDefinition() == typeof(Collector&lt;&gt;));
+
+            foreach (var collector in allCollectorTypes)
+            {
+                Type collectorType = typeof(Collector&lt;&gt;);
+
+                //find  generic of collector
+                Type genericCollectorType = collectorType.MakeGenericType(collector.PropertyType.GetGenericArguments()[0]);
+
+                //invoke Clear method of collector
+                genericCollectorType?.GetMethod(&#34;Clear&#34;)?.Invoke(collector.GetValue(this), null);
+            }
+        }
+
+</code></pre>
+  </div>
+
+
 <p>Thanks for reading. See you soon 😄</p>
 
     </div>
@@ -400,17 +414,10 @@ public class ScheduleJobManager&lt;T&gt; : IScheduleJobManager&lt;T&gt; where T 
           </div>
           <div class="pagination__buttons">
             
-              <span class="button previous">
-                <a href="https://arslanmurat06.github.io/posts/reflection/">
-                  <span class="button__icon">←</span>
-                  <span class="button__text">Invoke child generic classes&#39; methods using reflection C#</span>
-                </a>
-              </span>
-            
             
               <span class="button next">
-                <a href="https://arslanmurat06.github.io/posts/qr_code/">
-                  <span class="button__text">Making downloadable QR Code Generator With Flutter</span>
+                <a href="https://arslanmurat06.github.io/posts/hangfire/">
+                  <span class="button__text">Background process with Hangfire and .NET 6</span>
                   <span class="button__icon">→</span>
                 </a>
               </span>
